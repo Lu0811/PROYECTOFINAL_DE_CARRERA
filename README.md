@@ -11,9 +11,10 @@ Se han añadido nuevas fases de análisis para calcular probabilidades y modelar
 ### Imagen 1: `evidencia2.png`
 ![Evidencia 1](./evidencia2.png)
 
-### Imagen 2: `evidencia.gif`
-![Evidencia 2](./evidencia.gif)
+### Imagen 2: `prueba 1.png`
+![Evidencia 2](./prueba%201.png)
 
-### Imagen 3: `prueba 1.png`
-![Prueba 1](./prueba%201.png)
+### Imagen 3: `evidencia.gif`
+![Prueba 1](./evidencia.gif)
+
 
