@@ -1,0 +1,350 @@
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4895ef;
+    --dark-color: #2b2d42;
+    --light-color: #f8f9fa;
+    --success-color: #4cc9f0;
+    --warning-color: #f72585;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-color);
+    margin: 0;
+    padding: 0;
+    color: var(--dark-color);
+}
+
+.sidebar {
+    background-color: white;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    padding: 0;
+}
+
+.sidebar-header {
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-box {
+    margin-top: 15px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+}
+
+.search-box input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.list-group-item:hover {
+    background-color: #f0f4ff;
+    transform: translateX(5px);
+}
+
+.list-group-item i {
+    color: var(--accent-color);
+}
+
+.sidebar-footer {
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+.stats-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--dark-color);
+    font-size: 0.9rem;
+}
+
+.stats-card i {
+    color: var(--primary-color);
+}
+
+.main-content {
+    padding: 0;
+    background-color: #f5f7fa;
+}
+
+.dashboard-header {
+    padding: 20px;
+    background-color: white;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--dark-color);
+}
+
+.visualization-container {
+    padding: 20px;
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+
+.visualization-header {
+    margin-bottom: 20px;
+}
+
+.visualization-main {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    padding: 20px;
+    min-height: 500px;
+    position: relative;
+}
+
+.placeholder-graphic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #aaa;
+    text-align: center;
+}
+
+.placeholder-graphic i {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+}
+
+.details-panel {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 400px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.details-panel.active {
+    right: 0;
+}
+
+.details-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details-header h4 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.close-details {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #999;
+}
+
+.details-content {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.custom-tooltip {
+    position: absolute;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 5px;
+    pointer-events: none;
+    font-size: 14px;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Visualizaciones específicas */
+.node {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.node:hover {
+    stroke: #333;
+    stroke-width: 2px;
+}
+
+.link {
+    stroke-opacity: 0.4;
+}
+
+.heatmap-cell:hover {
+    stroke: #333;
+    stroke-width: 1px;
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+    .sidebar {
+        position: relative;
+        height: auto;
+    }
+    
+    .details-panel {
+        width: 100%;
+        right: -100%;
+    }
+}
+/* Añadir estos estilos al final del archivo */
+/* Añadir estos estilos al final del archivo */
+
+.timeline-point {
+    cursor: pointer;
+    transition: r 0.2s, fill 0.2s;
+}
+
+.timeline-point:hover {
+    r: 8;
+    fill: #ff7f0e;
+}
+
+.main-chart {
+    margin-top: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.bar-max {
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.bar-avg {
+    transition: opacity 0.2s;
+}
+
+.bar-max:hover, .bar-avg:hover {
+    opacity: 1;
+}
+
+.axis text {
+    font-size: 12px;
+    fill: #666;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #ddd;
+    shape-rendering: crispEdges;
+}
+
+.tooltip-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.tooltip-value {
+    margin-left: 10px;
+    float: right;
+}
+/* Añadir estos estilos al final del archivo */
+
+#stats-box span {
+    font-weight: 600;
+}
+
+.stats-card-visual {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    padding: 20px;
+    max-width: 350px;
+    font-size: 0.95rem;
+    transition: box-shadow 0.3s;
+}
+
+.stats-card-visual:hover {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.stats-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.stats-header i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.stats-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.stats-item:last-child {
+    border-bottom: none;
+}
+
+.label {
+    color: #666;
+    font-weight: 500;
+}
+
+.value {
+    font-weight: bold;
+    color: var(--dark-color);
+}

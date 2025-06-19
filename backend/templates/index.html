@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Avanzado de Rutas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v4.min.js"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Panel lateral izquierdo mejorado -->
+            <div class="col-md-3 sidebar">
+                <div class="sidebar-header">
+                    <h2><i class="mdi mdi-chart-areaspline"></i> Variables</h2>
+                    <div class="search-box">
+                        <input type="text" id="column-search" placeholder="Buscar variable...">
+                    </div>
+                </div>
+                <div class="list-group" id="column-list">
+                    <div class="text-center py-3">Cargando variables...</div>
+                </div>
+                <div class="sidebar-footer">
+                    <div class="stats-card">
+                        <i class="mdi mdi-database"></i>
+                        <span id="total-records">-</span> registros
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Área principal -->
+            <div class="col-md-9 main-content">
+                <div class="dashboard-header">
+                    <h1><i class="mdi mdi-bus-articulated-front"></i> Dashboard de Rutas Interactivo</h1>
+                    <div class="dashboard-controls">
+                        <button id="reset-view" class="btn btn-sm btn-outline-secondary">
+                            <i class="mdi mdi-refresh"></i> Reiniciar vista
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Visualización actual -->
+                <div class="visualization-container">
+                    <div class="visualization-header">
+                        <h3 id="chart-title">Seleccione una variable del panel izquierdo</h3>
+                        <div id="chart-description" class="text-muted"></div>
+                                        <div id="timeline-container" class="mb-4"></div>
+                        <div id="stats-box" class="stats-card-visual">
+                        <div class="stats-header">
+                            <i class="mdi mdi-chart-box-outline"></i>
+                            <div>
+                                <h5 class="mb-0">Estadísticas Generales</h5>
+                                <small class="text-muted">Datos por fecha seleccionada</small>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="stats-item">
+                            <span class="label">Fecha:</span>
+                            <span id="selected-date" class="value">-</span>
+                        </div>
+                        <div class="stats-item">
+                            <span class="label">Máximo:</span>
+                            <span id="stat-max" class="value">-</span>
+                        </div>
+                        <div class="stats-item">
+                            <span class="label">Mínimo:</span>
+                            <span id="stat-min" class="value">-</span>
+                        </div>
+                        <div class="stats-item">
+                            <span class="label">Media:</span>
+                            <span id="stat-medio" class="value">-</span>
+                        </div>
+                </div>
+
+                    </div>
+                    
+                    <div id="visualization" class="visualization-main">
+                        <div class="placeholder-graphic">
+                            <i class="mdi mdi-chart-bubble"></i>
+                            <p>Interactúa con las variables para explorar los datos</p>
+                        </div>
+                    </div>
+                    <div id="details-panel" class="details-panel">
+                        <div class="details-header">
+                            <h4>Detalles <span id="detail-type"></span></h4>
+                            <button class="close-details"><i class="mdi mdi-close"></i></button>
+                        </div>
+                        <div id="details-content" class="details-content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip flotante -->
+    <div id="tooltip" class="custom-tooltip"></div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
